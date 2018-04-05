@@ -1,0 +1,17 @@
+.container
+  .card-panel
+    .row.col.m12
+      %h2 Login
+    .row
+      = form_for resource, as: resource_name, url: session_path(resource_name) do |f|
+        .field
+          = f.label :username
+          = f.text_field :username, autofocus: true
+        .field
+          = f.label :password
+          = f.password_field :password, autocomplete: "off"
+
+        - if devise_mapping.rememberable?
+          .actions
+            = f.submit "Log in", class: 'btn'
+            = link_to "Sign Up", new_user_registration_path, class: 'btn'
