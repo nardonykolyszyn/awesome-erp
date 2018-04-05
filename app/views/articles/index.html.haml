@@ -1,23 +1,21 @@
-%h1 Listing articles
-
-%table
-  %thead
-    %tr
-      %th Name
-      %th Price
-      %th
-      %th
-      %th
-
-  %tbody
-    - @articles.each do |article|
+.container
+  .row.center
+    %h3 Listing articles
+    = link_to 'New Article', new_article_path, class: 'btn'
+  %table.highlight
+    %thead
       %tr
-        %td= article.name
-        %td= article.price
-        %td= link_to 'Show', article
-        %td= link_to 'Edit', edit_article_path(article)
-        %td= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' }
+        %th Name
+        %th Price
+        %th Actions
+    %tbody
+      - @articles.each do |article|
+        %tr
+          %td= article.name
+          %td= article.price
+          %td
+            = link_to 'Edit', edit_article_path(article), class: 'btn-small yellow darken-3'
+            = link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn-small red darken-2'
 
-%br
-
-= link_to 'New Article', new_article_path
+  .row.center
+    = will_paginate @articles, renderer: MaterializePagination::Rails

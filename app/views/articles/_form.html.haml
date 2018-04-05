@@ -1,16 +1,18 @@
-= form_for @article do |f|
-  - if @article.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@article.errors.count, "error")} prohibited this article from being saved:"
-      %ul
-        - @article.errors.full_messages.each do |message|
-          %li= message
+.container
+  = form_for @article do |f|
+    - if @article.errors.any?
+      #error_explanation
+        %h2= "#{pluralize(@article.errors.count, "error")} prohibited this article from being saved:"
+        %ul
+          - @article.errors.full_messages.each do |message|
+            %li= message
 
-  .field
-    = f.label :name
-    = f.text_field :name
-  .field
-    = f.label :price
-    = f.text_field :price
-  .actions
-    = f.submit 'Save'
+    .field
+      = f.label :name
+      = f.text_field :name
+    .field
+      = f.label :price
+      = f.text_field :price
+    .actions
+      = f.submit 'Save', class: 'btn'
+      = link_to 'Back', articles_path, class: 'btn'
