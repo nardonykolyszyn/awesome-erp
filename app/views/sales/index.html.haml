@@ -1,0 +1,24 @@
+.container
+  .row.center
+    %h3 Listing sales
+    = link_to 'New Sale', new_sale_path, class: 'btn'
+  %table
+    %thead
+      %tr
+        %th Payment type
+        %th Expired
+        %th Amount
+        %th Actions
+
+    %tbody
+      - @sales.each do |sale|
+        %tr
+          %td= sale.payment_type
+          %td= sale.expired
+          %td= sale.amount
+          %td
+            = link_to 'Show', sale
+            = link_to 'Generate Report', root_path
+            - unless sale.expired
+              = link_to 'Edit', edit_sale_path(sale)
+              = link_to 'Close', close_sale_path(sale), method: :post, data: { confirm: 'Are you sure?' }

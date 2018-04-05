@@ -1,0 +1,23 @@
+.container
+  = simple_form_for @sale do |f|
+    - if @sale.errors.any?
+      #error_explanation
+        %h2= "#{pluralize(@sale.errors.count, "error")} prohibited this sale from being saved:"
+        %ul
+          - @sale.errors.full_messages.each do |message|
+            %li= message
+    .fields
+    = f.simple_fields_for :articles do |article|
+      = render 'article_fields', f: article
+    .links
+      = link_to_add_association 'Add article', f, :articles
+    .actions
+      = f.submit 'Save', class: 'btn'
+      = link_to 'Back', sales_path, class: 'btn'
+
+
+:javascript
+  $(document).ready(function(){
+    $('select').formSelect();
+  });
+       

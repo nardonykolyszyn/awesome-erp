@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Payment type:
+  = @sale.payment_type
+%p
+  %b Expired:
+  = @sale.expired
+%p
+  %b Amount:
+  = @sale.amount
+
+= link_to 'Edit', edit_sale_path(@sale)
+\|
+= link_to 'Back', sales_path

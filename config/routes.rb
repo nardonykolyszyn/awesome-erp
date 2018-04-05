@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  resources :sales do
+    member do
+      post 'close'
+    end
+  end
   root 'home#index'
   get 'home/index'
 
@@ -7,4 +12,4 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
   }
   resources :articles
-end
+end 

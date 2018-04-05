@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180405022305) do
+ActiveRecord::Schema.define(version: 20180405074112) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,6 +30,23 @@ ActiveRecord::Schema.define(version: 20180405022305) do
     t.datetime "updated_at", null: false
     t.index ["name", "resource_type", "resource_id"], name: "index_roles_on_name_and_resource_type_and_resource_id"
     t.index ["resource_type", "resource_id"], name: "index_roles_on_resource_type_and_resource_id"
+  end
+
+  create_table "sale_articles", force: :cascade do |t|
+    t.bigint "sale_id"
+    t.bigint "article_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["article_id"], name: "index_sale_articles_on_article_id"
+    t.index ["sale_id"], name: "index_sale_articles_on_sale_id"
+  end
+
+  create_table "sales", force: :cascade do |t|
+    t.integer "payment_type", default: 0
+    t.boolean "expired", default: false
+    t.string "amount"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -58,4 +75,6 @@ ActiveRecord::Schema.define(version: 20180405022305) do
     t.index ["user_id"], name: "index_users_roles_on_user_id"
   end
 
+  add_foreign_key "sale_articles", "articles"
+  add_foreign_key "sale_articles", "sales"
 end
