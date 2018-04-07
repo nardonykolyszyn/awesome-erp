@@ -5,7 +5,7 @@ default: &default
 
 development:
   <<: *default
-  database: <%= ENV.fetch("DEVELOPMENT_DATABASE") %>
+  database: <%= ENV.fetch("DEVELOPMENT_DATABASE", "devpolish") %>
 test:
   <<: *default
   database: administrator-rails_test
