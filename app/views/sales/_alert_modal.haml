@@ -1,0 +1,11 @@
+#alert-modal.modal
+  .modal-content
+    %h4 Information
+    %p If you press ok, you'll cannot change anything in this sale. Are you sure?
+  .modal-footer
+    = link_to 'Ok', close_sale_path(sale), method: :post, class: 'modal-action modal-close btn-flat'
+
+:javascript
+  $(document).ready( () => {
+    $('.modal').modal();
+  });

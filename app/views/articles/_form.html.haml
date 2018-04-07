@@ -1,5 +1,5 @@
 .container
-  = form_for @article do |f|
+  = simple_form_for @article do |f|
     - if @article.errors.any?
       #error_explanation
         %h2= "#{pluralize(@article.errors.count, "error")} prohibited this article from being saved:"
@@ -13,6 +13,13 @@
     .field
       = f.label :price
       = f.text_field :price
+    .field
+      = f.association :categories, input_html: { class: 'coco', multiple: true }
+    %br
     .actions
       = f.submit 'Save', class: 'btn'
       = link_to 'Back', articles_path, class: 'btn'
+    
+
+:javascript
+  $(document).ready( () => { $('select').select2({multiple: true}) })

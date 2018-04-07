@@ -6,14 +6,12 @@
         %ul
           - @sale.errors.full_messages.each do |message|
             %li= message
-    .fields
-    = f.simple_fields_for :articles do |article|
-      = render 'article_fields', f: article
-    .links
-      = link_to_add_association 'Add article', f, :articles
-    .actions
-      = f.submit 'Save', class: 'btn'
-      = link_to 'Back', sales_path, class: 'btn'
+    .row.center
+      %p.flow-text Select an article
+      .divider
+    .row.center
+      %p.flow-text Selected articles
+      .divider
 
 
 :javascript

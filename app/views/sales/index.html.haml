@@ -21,4 +21,5 @@
             = link_to 'Generate Report', root_path
             - unless sale.expired
               = link_to 'Edit', edit_sale_path(sale)
-              = link_to 'Close', close_sale_path(sale), method: :post, data: { confirm: 'Are you sure?' }
+              %a{href: '#alert-modal', class: 'modal-trigger'} Close
+        = render 'sales/alert_modal', sale: sale

@@ -1,6 +1,6 @@
 class Sale < ApplicationRecord
   ## Callbacks
-  after_validation :calculate_amount, if: :new_record?
+  after_validation :calculate_amount
   ## Enum method
   enum payment_type: [:cash, :credit_card, :debit_card]
   ## Relationships

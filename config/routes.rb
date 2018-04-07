@@ -12,4 +12,5 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
   }
   resources :articles
+  resources :categories, only: [:index]
 end 
