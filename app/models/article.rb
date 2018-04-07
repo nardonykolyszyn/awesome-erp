@@ -4,4 +4,6 @@ class Article < ApplicationRecord
   has_many :sale_article
   has_many :sales, through: :sale_article
   has_and_belongs_to_many :categories
+  ## Validations
+  validates_presence_of :name
 end

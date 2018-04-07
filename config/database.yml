@@ -11,6 +11,6 @@ test:
   database: administrator-rails_test
 production:
   <<: *default
-  database: administrator-rails_production
+  database: administrator-rails
   username: administrator-rails
   password: <%= ENV['ADMINISTRATOR-RAILS_DATABASE_PASSWORD'] %>

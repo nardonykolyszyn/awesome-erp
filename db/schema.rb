@@ -18,6 +18,8 @@ ActiveRecord::Schema.define(version: 20180407003615) do
   create_table "articles", force: :cascade do |t|
     t.string "name"
     t.string "price"
+    t.integer "quantity", default: 0, null: false
+    t.boolean "available", default: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

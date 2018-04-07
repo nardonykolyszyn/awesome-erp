@@ -7,14 +7,21 @@
           - @article.errors.full_messages.each do |message|
             %li= message
 
-    .field
-      = f.label :name
-      = f.text_field :name
-    .field
-      = f.label :price
-      = f.text_field :price
-    .field
-      = f.association :categories, input_html: { class: 'coco', multiple: true }
+    .row
+      = f.input :name, wrapper_html: { class: 'input-field col m12' }
+      = f.input :price, wrapper_html: { class: 'input-field col m12' }
+      = f.label :categories
+      = f.association :categories, input_html: { class: 'coco', multiple: true, style: 'width: 100%' }, wrapper_html: { class: 'input-field col m12' }, :include_blank => false
+      .input-field.col.m6
+        = f.input :quantity, as: :integer
+      .input-field.col.m6
+        .switch
+          %label
+            Unavailable
+            = f.check_box :available
+            %span.lever
+            Available
+
     %br
     .actions
       = f.submit 'Save', class: 'btn'

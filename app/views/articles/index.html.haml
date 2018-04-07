@@ -7,12 +7,18 @@
       %tr
         %th Name
         %th Price
+        %th Available
+        %th Quantity
+        %th Categories
         %th Actions
     %tbody
       - @articles.each do |article|
         %tr
           %td= article.name
           %td= article.price
+          %td= is_available? article.available
+          %td= article.quantity
+          %td= article.categories.size
           %td
             = link_to 'Edit', edit_article_path(article), class: 'btn-small yellow darken-3'
             = link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn-small red darken-2'
