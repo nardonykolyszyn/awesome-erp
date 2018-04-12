@@ -1,0 +1,3 @@
+= form_for(Category.new, remote: true, authenticity_token: true) do |f|
+  = f.text_field :name
+  = f.submit 'Save', class: 'btn'

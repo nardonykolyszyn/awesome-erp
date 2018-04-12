@@ -1,21 +1,13 @@
 .container
   = simple_form_for @sale do |f|
-    - if @sale.errors.any?
-      #error_explanation
-        %h2= "#{pluralize(@sale.errors.count, "error")} prohibited this sale from being saved:"
-        %ul
-          - @sale.errors.full_messages.each do |message|
-            %li= message
-    .row.center
-      %p.flow-text Select an article
-      .divider
-    .row.center
-      %p.flow-text Selected articles
-      .divider
-
-
-:javascript
-  $(document).ready(function(){
-    $('select').formSelect();
-  });
-       
+    .row.col.m6
+      = f.input :amount, as: :integer
+    .row.col.m6
+      .switch
+        %label
+          Unavailable
+          = f.check_box :expired
+          %span.lever
+          Available
+    .row.col.m12
+      = f.submit 'Save', class: 'btn'
