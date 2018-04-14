@@ -1,0 +1,22 @@
+.container
+  .row.center
+    %h3 TODO list
+    = link_to 'New todo', new_task_path, class: 'btn'
+    %br
+    %br
+    .divider
+  .row
+    - @tasks.each do |task|
+      .col.m4
+        .card
+          .card-image
+            %img{:src => "http://materializecss.com/images/sample-1.jpg"}/
+            %span.card-title= task.name
+          .card-content
+            %p
+              I am a very simple card. I am good at containing small bits of information.
+              I am convenient because I require little markup to use effectively.
+          .card-action
+            = link_to 'Edit', edit_task_path(task)
+            %a
+              = priority_badge task.priority

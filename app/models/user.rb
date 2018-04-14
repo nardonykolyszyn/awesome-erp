@@ -2,6 +2,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   rolify
+  ## CarrierWave
+  mount_uploader :photo, UserPhotoUploader
   ## Callbacks
   after_create :assign_default_role
   ## Relationships

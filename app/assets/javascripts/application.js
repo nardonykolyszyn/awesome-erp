@@ -14,7 +14,6 @@
 
 //= require jquery
 //= require materialize
-//= require_tree .
 //= require cocoon
 //= require select2
 //= require underscore

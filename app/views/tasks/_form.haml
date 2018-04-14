@@ -1,0 +1,18 @@
+.container
+  = simple_form_for(Task.new) do |f|
+    .row
+      = f.input :name, wrapper_html: { class: 'col m6' }
+      = f.input :priority, collection: Task.priorities.keys, wrapper_html: { class: 'col m6' }, :include_blank => false
+      = f.input :start_at, as: :string, wrapper_html: { class: 'col m6 datepicker' }
+      = f.input :end_at, as: :string, wrapper_html: { class: 'col m6 datepicker' }
+      = f.input :description, as: :string, wrapper_html: { class: 'col m12 materialize-textarea' }
+    .row.center
+      = f.submit 'Save', class: 'btn'
+
+:javascript
+  $(document).ready( () => {
+    $('select').formSelect();
+    $('.datepicker').datepicker({
+      format: 'mmmm dd, yy'
+    });
+  })

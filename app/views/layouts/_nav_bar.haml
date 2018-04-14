@@ -9,7 +9,10 @@
             .background
               %img{:src => "http://materializecss.com/images/office.jpg"}/
             %a{:href => "#user"}
-              %img.circle{:src => "http://materializecss.com/images/yuna.jpg"}/
+              - if current_user.photo.present?
+                %img{src: current_user.photo.thumb.url, class: 'circle'}
+              - else
+                %img.circle{:src => "http://materializecss.com/images/yuna.jpg"}/
             %a{:href => "#name"}
               %span.white-text.name= current_user.username
             %a{:href => "#email"}
@@ -27,9 +30,15 @@
             %i.material-icons> shopping_cart
             Articles
         %li
+          %a{:href => "/tasks"}
+            %i.material-icons> today
+            TODO
+        %li
           .divider
         %li
           %a.subheader Configuration
+        %li
+          = link_to 'Settings', edit_user_registration_path(current_user)
         %li
           = link_to 'Sign out', destroy_user_session_path, method: :delete
     %a{href: '/', class: 'brand-logo center'} Administrador

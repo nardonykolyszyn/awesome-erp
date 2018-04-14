@@ -67,4 +67,4 @@ gem 'underscore-rails'
 gem 'pg_search'
 gem 'faker'
 gem 'carrierwave'
-
+gem 'mini_magick'
