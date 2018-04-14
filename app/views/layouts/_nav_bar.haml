@@ -1,14 +1,41 @@
 %nav
   .nav-wrapper.blue
-    %a{href: '/', class: 'brand-logo'} Administrador
-    %ul{id: 'nav-mobile', class: 'right hide-on-med-and-down'}
-      - if user_signed_in?
+    - if user_signed_in?
+      %a.sidenav-trigger{"data-target" => "slide-out", :href => "", :style => "display: inline;"}
+        %i.material-icons menu
+      %ul#slide-out.sidenav
         %li
-          = link_to 'My enterprise', edit_enterprise_path(current_user.enterprise)
+          .user-view
+            .background
+              %img{:src => "http://materializecss.com/images/office.jpg"}/
+            %a{:href => "#user"}
+              %img.circle{:src => "http://materializecss.com/images/yuna.jpg"}/
+            %a{:href => "#name"}
+              %span.white-text.name= current_user.username
+            %a{:href => "#email"}
+              %span.white-text.email= current_user.email
         %li
-          = link_to 'Sales', sales_path
+          %a{:href => "/enterprises/#{current_user.enterprise_id}/edit"}
+            %i.material-icons> domain
+            My company
         %li
-          = link_to 'Articles', articles_path
+          %a{:href => "/sales"}
+            %i.material-icons> poll
+            Sales
         %li
-          = link_to 'Logout', destroy_user_session_path, method: :delete
-        
+          %a{:href => "/articles"}
+            %i.material-icons> shopping_cart
+            Articles
+        %li
+          .divider
+        %li
+          %a.subheader Configuration
+        %li
+          = link_to 'Sign out', destroy_user_session_path, method: :delete
+    %a{href: '/', class: 'brand-logo center'} Administrador
+
+
+:javascript
+  $(document).ready(function(){
+    $('.sidenav').sidenav();
+  });

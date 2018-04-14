@@ -10,9 +10,11 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+
+
 //= require jquery
-//= require_tree .
 //= require materialize
+//= require_tree .
 //= require cocoon
 //= require select2
 //= require underscore
