@@ -12,7 +12,7 @@ class EnterprisesController < ApplicationController
 	  @enterprise = Enterprise.new(enterprise_params)
 		if @enterprise.valid?
 			@enterprise.save!
-			current_user.update!(enterprise_id: @enterprise.id)
+			current_user.update!(enterprise: @enterprise)
 			redirect_to root_path, notice: 'Empresa creada'
 		else
 			render :new
