@@ -1,8 +1,10 @@
 %nav
   .nav-wrapper.blue
-    %a{href: '#', class: 'brand-logo'} Administrador
+    %a{href: '/', class: 'brand-logo'} Administrador
     %ul{id: 'nav-mobile', class: 'right hide-on-med-and-down'}
       - if user_signed_in?
+        %li
+          = link_to 'My enterprise', edit_enterprise_path(current_user.enterprise)
         %li
           = link_to 'Sales', sales_path
         %li

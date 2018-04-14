@@ -1,0 +1,4 @@
+= simple_form_for(@enterprise) do |f|
+  = f.input :name
+  = f.input :photo, as: :file
+  = f.submit "Save", class: 'btn'

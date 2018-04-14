@@ -1,7 +1,10 @@
+- if notice
+  .alert.warning
+    = notice
 .container
   .row
     .col.s12.m12.center
       .card-panel.teal.white-text
         %h2 Welcome! #{current_user.username}
         %span{class: 'white-text'}
-          I hope you feel good, have a nice day.
+          You are managing #{current_user.enterprise.name}

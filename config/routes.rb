@@ -13,4 +13,5 @@ Rails.application.routes.draw do
   }
   resources :articles
   resources :categories, only: [:index]
+  resources :enterprises, only: [:new, :create, :update, :edit]
 end 

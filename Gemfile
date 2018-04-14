@@ -66,3 +66,5 @@ gem 'select2-rails'
 gem 'underscore-rails'
 gem 'pg_search'
 gem 'faker'
+gem 'carrierwave'
+
