@@ -13,7 +13,7 @@ class HomeController < ApplicationController
   end
 
   def redirect_to_enterprise
-    if current_user.enterprise_id.nil?
+    if current_user.enterprise.nil?
       redirect_to new_enterprise_path, notice: 'Crea una empresa'
     end
   end
