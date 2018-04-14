@@ -5,3 +5,22 @@
         %h2 Welcome! #{current_user.username}
         %span{class: 'white-text'}
           You are managing #{current_user.enterprise.name}
+
+
+.fixed-action-btn
+  %a#menu.btn-floating.btn-large{:onclick => "$('.tap-target').tapTarget('open')"}
+    %i.material-icons menu
+
+
+.tap-target{"data-target" => "menu"}
+  .tap-target-content.white-text
+    %h5 Welcome!
+    %p Click this float button for dismiss
+
+
+:javascript
+  $(document).ready( () => {
+    $('.tap-target').tapTarget();
+    $('.tap-target').tapTarget('open');
+  });
+          
