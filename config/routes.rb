@@ -15,4 +15,5 @@ Rails.application.routes.draw do
   resources :categories, only: [:index]
   resources :enterprises, only: [:new, :create, :update, :edit]
   resources :tasks
-end 
+  resources :projects
+end

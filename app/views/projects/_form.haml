@@ -1,0 +1,21 @@
+.container
+  = simple_form_for(@project) do |f|
+    .row
+      = f.input :title, wrapper_html: { class: 'col m6' }
+      = f.input :days, wrapper_html: { class: 'col m6' }
+      = f.input :description, as: :text, wrapper_html: { class: 'input-field col m12' }, input_html: { class:'materialize-textarea' }
+    .row
+      = f.simple_fields_for :galleries do |gallery|
+        = render 'gallery_fields', f: gallery
+      .links
+        = link_to_add_association 'Add Gallery', f, :galleries
+    .row
+      - if @project.galleries.present?
+        %h3.flow-text.center Gallery
+        - @project.galleries.each do |gallery|
+          .col.m6
+            .card{style: 'width: 200px !important;'}
+              .card-image
+                = image_tag(gallery.image.middle.url)
+    .row.center
+      = f.submit 'Save', class: 'btn'

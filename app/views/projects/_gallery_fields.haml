@@ -1,0 +1,9 @@
+.nested-fields
+  .file-field.input-field
+    .btn
+      %span File
+      = f.input :image, as: :file
+    .file-path-wrapper
+      %input.file-path.validate{:type => "text", :placeholder => "Upload your gallery"}/
+  .row
+    = link_to_remove_association "Remove Gallery", f

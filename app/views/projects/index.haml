@@ -1,0 +1,19 @@
+.container
+  .row.center
+    %h3 Projects list
+    = link_to 'New project', new_project_path, class: 'btn'
+    %br
+    %br
+    .divider
+  .row
+    - @projects.each do |project|
+      .col.m4
+        .card
+          .card-image
+            = image_tag(project.galleries.first.image.middle.url)
+            %span.card-title= project.title
+          .card-content
+            %p= project.description
+          .card-action
+            = link_to 'Edit', edit_project_path(project)
+            = link_to 'Destroy', project, method: :delete
