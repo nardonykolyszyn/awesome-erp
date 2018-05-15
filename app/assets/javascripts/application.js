@@ -13,7 +13,6 @@
 
 
 //= require jquery
-//= require materialize
 //= require cocoon
 //= require select2
 //= require underscore
